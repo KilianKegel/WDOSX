@@ -1,0 +1,463 @@
+
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="keywords" content="WDOSX WDosX wdosx DOS extender pmode DPMI protected mode programming free freeware">
+    <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; I) [Netscape]">
+    <title>WDOSX</title>
+</head>
+<body text="#FFFFFF" bgcolor="#000000" link="#00FF00" vlink="#00FFFF" alink="#FF80FF" background="index.html">
+    <a NAME="top"></a>
+    <table WIDTH="100%" BGCOLOR="#FFFFFF">
+        <tr ALIGN=CENTER VALIGN=CENTER>
+            <td ALIGN=CENTER VALIGN=CENTER>
+                <b>
+                    <font color="#000000">
+                        <font size=+3>
+                            Wuschel's
+                            DOS eXtender
+                        </font>
+                    </font>
+                </b>
+            </td>
+        </tr>
+    </table>
+
+    <ul>
+        <li>
+            <a href="#overview">Overview</a>
+        </li>
+
+        <li>
+            <a href="#downloads">Download</a>
+        </li>
+
+        <li>
+            <a href="#links">Links</a>
+        </li>
+
+        <li>
+            <a href="#contact">Author contact</a>
+        </li>
+    </ul>
+
+    <center>
+        <table WIDTH="100%" BGCOLOR="#404040">
+            <tr ALIGN=CENTER VALIGN=CENTER>
+                <td>
+                    <b>
+                        <font color="#FFC0FF">
+                            <font size=+2>
+                                News: February 2005: WDOSX
+                                0.97 (Final)&nbsp;
+                            </font>
+                        </font>
+                    </b>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <p>
+        This is the final release ever from my side. Compatibilty with OpenWatcom generated
+        executables has been provided and some more changes which to document I forgot.
+        <a href="wdosx097.zip">Download wdosx097.zip (690.944 bytes)</a>.
+    </p>
+    <p>Changes since WDOSX 0.96:<p>
+        Beta 1:
+        <ul>
+            <li>
+                Runs under WinXP.
+            <li>
+                The Win32 API emulation has been fixed for Borland C++ 5.0x.
+            <li>
+                Win32.LoadResource() now returning the pointer correctly.
+        </ul>
+    <p>
+        Beta 2:
+        <ul>
+            <li>
+                Add LockFile, UnlockFile, and DuplicateHandle to the Win32 API emulation
+            <li>
+                Fix a WFSE bug where WFSE attachments > 4MB in size would not always be read
+                correctly
+            <li>
+                Unresolved Win32 imports do not automatically lead to program load errors.
+                Rather the program only aborts at run time when an unresolved imported
+                function is actually being called. This makes more programs work with WDOSX.
+            <li>
+                Changed WADD.EXE to be able to replace WFSE modules. This has been done to
+                satisfy the LGPL requirement of the ability to completely rebuild the
+                application with a modified version of the "library" (WDOSX).
+        </ul>
+    <p>
+        Get it from <a href="WDX097B2.ZIP">
+            here
+            (WDX097B2.ZIP 667.284 bytes)
+        </a>.
+    <p>
+        <center>
+            <table WIDTH="100%" BGCOLOR="#C0C0C0">
+                <tr ALIGN=CENTER VALIGN=CENTER>
+                    <td><a NAME="overview"></a><b><font color="#000000"><font size=+2>Overview</font></font></b></td>
+                </tr>
+            </table>
+        </center>
+
+    <p>
+        WDosX is a free 32 bit DOS extender. The most recent final version is
+        0.97 which you can <a href="#downloads">download</a> from this page. Supported
+        memory allocation schemes are:
+        <ul>
+            <li>
+                RAW (BIOS INT 0x15)
+            </li>
+
+            <li>
+                XMS
+            </li>
+
+            <li>
+                VCPI
+            </li>
+
+            <li>
+                DPMI
+            </li>
+        </ul>
+        While running under WDosX your program has access to a
+        <a href="int31api.html">
+            fair
+            subset
+        </a> of DPMI 0.9 functions as well as an <a href="int21api.html">
+            extended
+            DOS INT 21 API
+        </a>. WDosX comes with some libraries, example programs and
+        a full screen debugger. It features a true flat (zero based) memory model
+        and support for DLLs as well as executable compression.
+    <p>
+        The following programming environments are supported by WDosX 0.97:
+        <center>
+            <table CELLPADDING=10 BGCOLOR="#000080">
+                <tr BGCOLOR="#00FFFF">
+                    <td><font color="#000000">Assembler/ Compiler</font></td>
+
+                    <td><font color="#000000">Supported target executable formats</font></td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.web-sites.co.uk/nasm/">NASM</a></td>
+
+                    <td>Flat form binary, RDOFF, RDOFF 2 (NEW!)</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.inprise.com">TASM</a></td>
+
+                    <td>32 bit "MZ", PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.microsoft.com">MASM</a></td>
+
+                    <td>32 bit "MZ", PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.microsoft.com">MSVC++ 4/5 (NEW! MSVC 6)</a></td>
+
+                    <td>Win32 - PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.inprise.com">Borland C++ 4.xx/5.xx</a></td>
+
+                    <td>Win32 - PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.inprise.com">Borland C++ Builder</a></td>
+
+                    <td>Win32 - PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.inprise.com">Borland Delphi 2, 3 and 4</a></td>
+
+                    <td>Win32 - PE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.powersoft.com">Watcom C++</a></td>
+
+                    <td>Watcom style LE</td>
+                </tr>
+
+                <tr>
+                    <td><a href="http://www.delorie.com">DJGPP v2</a></td>
+
+                    <td>COFF</td>
+                </tr>
+            </table>
+        </center>
+
+    <p>
+        Different target executable formats are supported with different feature
+        sets:
+        <center>
+            <table CELLPADDING=10 BGCOLOR="#000080">
+                <tr BGCOLOR="#00FFFF">
+                    <td><font color="#000000">EXE format</font></td>
+
+                    <td><font color="#000000">DLL Support</font></td>
+
+                    <td><font color="#000000">True Flat</font></td>
+
+                    <td><font color="#000000">EXE compression</font></td>
+                </tr>
+
+                <tr>
+                    <td>Plain Binary</td>
+
+                    <td>NO</td>
+
+                    <td>NO</td>
+
+                    <td>NO</td>
+                </tr>
+
+                <tr>
+                    <td>32 bit "MZ"</td>
+
+                    <td>NO</td>
+
+                    <td>NO</td>
+
+                    <td>NO</td>
+                </tr>
+
+                <tr>
+                    <td>PE</td>
+
+                    <td>YES</td>
+
+                    <td>YES[1]</td>
+
+                    <td>YES</td>
+                </tr>
+
+                <tr>
+                    <td>LE</td>
+
+                    <td>NO</td>
+
+                    <td>YES</td>
+
+                    <td>YES</td>
+                </tr>
+
+                <tr>
+                    <td>RDOFF</td>
+
+                    <td>NO</td>
+
+                    <td>YES</td>
+
+                    <td>YES</td>
+                </tr>
+
+                <tr>
+                    <td>COFF</td>
+
+                    <td>NO</td>
+
+                    <td>NO</td>
+
+                    <td>YES</td>
+                </tr>
+
+                <tr>
+                    <td>DOS32</td>
+
+                    <td>NO</td>
+
+                    <td>YES[2]</td>
+
+                    <td>YES</td>
+                </tr>
+
+                <tr>
+                    <td COLSPAN="4">
+                        [1] Floating segment also available but without support
+                        for DLLs and compression.
+                        <br>[2] True flat only if relocation info found. There are four different
+                        sub formats.
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+    <p>
+        I have set up a mailing list to provide a means for users of WDOSX to
+        exchange ideas, code, solutions to common problems etc. and to collectively
+        bitch about bugs in WDOSX. To subscribe, send an email to
+        <a href="mailto:wdosx-subscribe@makelist.com">wdosx-subscribe@makelist.com</a>
+        or use the Form provided at the bottom of this page.
+    <p>
+        <font size=+1><a href="#top">Back to top</a></font>
+        <center>
+            <table WIDTH="100%" BGCOLOR="#C0C0C0">
+                <tr ALIGN=CENTER VALIGN=CENTER>
+                    <td><a NAME="downloads"></a><b><font color="#000000"><font size=+2>Downloads</font></font></b></td>
+                </tr>
+            </table>
+        </center>
+
+    <p>
+        <a href="wdosx097.zip">
+            Download the combined WDOSX 0.97 binaries and
+            source package (690944 bytes)
+        </a>
+    <p>
+        <font size=+1><a href="#top">Back to top</a></font>
+        <center>
+            <table WIDTH="100%" BGCOLOR="#C0C0C0">
+                <tr ALIGN=CENTER VALIGN=CENTER>
+                    <td><a NAME="links"></a><b><font color="#000000"><font size=+2>Links</font></font></b></td>
+                </tr>
+            </table>
+        </center>
+
+    <p>
+        <a href="http://www.web-sites.co.uk/nasm/">The Netwide Assembler(NASM)</a>
+        <br>...so you will learn what that NASM talk is all about
+    <p>
+        <a href="http://www.geocities.com/SiliconValley/Peaks/1231/">
+            Peter's
+            PMODE pages
+        </a>
+        <br>An excellent protected mode programming resource, slightly focussed
+        on but not limited to Watcom.
+    <p>
+        <a href="http://www.dwp42.org/">The Delphi- WDOSX Project</a>
+        <br>Extremely comprehensive programming framework and tons of information.
+        If you're into using Delphi with WDOSX and still haven't been there, you're
+        definitely missing out on something! Since the last WDOSX release, I've
+        fixed two issues the Win32 emulation had with the handling of resources.
+        Immo, the DWP maintainer, ran into these while working on his project.
+        You can download the fixed kernel32.wdl from <a href="k32patch.zip">here</a>.
+        Just put in place of the one that came with WDOSX 0.96.
+    <p>
+        <a href="http://surf.to/p32">P32 Pascal Compiler</a>
+        <br>A freeware 32 bit Pascal compiler
+    <p>
+        <a href="http://www.fortunecity.com/skyscraper/sql/39">Pascal Pro Compiler</a>
+        <br>Another free 32 bit Pascal compiler + source. Supports WDOSX true flat
+        model.
+    <p>
+        <a href="http://www.sudleyplace.com/">Sudley Place Software</a>
+        <br>If Wudebug isn't enough for your debugging needs, you may want to try
+        their free 386SWAT debugger. Looks like there's virtually nothing that
+        thing doesn't debug...
+    <p>
+        <a href="http://www.geocities.com/SiliconValley/Network/4311">ALINK</a>
+        <br>A free linker that links OMF/LIB to COM, MZ and PE. Specifically the
+        author mentions its use with NASM.
+    <p>
+        <a href="ftp://x2ftp.oulu.fi/pub/msdos/programming/specs/dpmispec.arj">
+            DPMI
+            0.9 specification
+        </a>
+        <br>You may need this one to make full use of WDosX's capabilities
+    <p>
+        <a href="ftp://x2ftp.oulu.fi/pub/msdos/programming/pmode/">
+            Check the
+            pmode directory on X2FTP for other freeware extenders
+        </a>
+        <br>...if you don't like WDosX, that is. Or check out
+    <p>
+        <a href="http://www.thefreecountry.com/">Cristopher Heng's Website</a>
+        <br>That not only contains links to other free DOS extenders but also to
+        free compilers etc.
+    <p>
+        <font size=+1><a href="#top">Back to top</a></font>
+        <center>
+            <table WIDTH="100%" BGCOLOR="#C0C0C0">
+                <tr ALIGN=CENTER VALIGN=CENTER>
+                    <td>
+                        <a NAME="contact"></a><b>
+                            <font color="#000000">
+                                <font size=+2>
+                                    Author
+                                    contact
+                                </font>
+                            </font>
+                        </b>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+        <center>
+            <font size=+1>
+                <a href="http://michael.tippach.bei.t-online.de/">
+                    Michael
+                    Tippach
+                </a>
+            </font>
+            <br><font size=+1>Alpenrosenstrasse 25</font>
+            <br><font size=+1>86179 Augsburg</font>
+            <br><font size=+1>Germany</font>
+            <br><font size=+1>email: <a href="mailto:mtippach@gmx.net">mtippach@gmx.net</a></font>
+            <br>ICQ: 123799232
+            <br><form method=GET action="http://www.findmail.com/cgi-bin/subscribe.py"><input type=hidden name="listname" value="wdosx">
+        </center>
+
+        <center>
+            <table BORDER=0 CELLSPACING=0>
+                <tr>
+                    <td>
+                        <table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="300">
+                            <tr>
+                                <td ALIGN=CENTER WIDTH="100%"><b>Subscribe to WDOSX user list</b></td>
+                            </tr>
+
+                            <tr>
+                                <td>Enter your e-mail address:</td>
+                            </tr>
+
+                            <tr>
+                                <td><input type=text name="emailaddr" value="your e-mail" size=21><input type=submit name="SubmitAction" VALUE="Subscribe"></td>
+                            </tr>
+
+                            <tr>
+                                <td><a href="http://www.findmail.com/list/wdosx/">FindMail List Archive</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <font face="arial,helvetica">
+                                        <font size=-1>
+                                            A mailing list hosted by
+                                            <a href="http://www.makelist.com/">MakeList!</a>
+                                        </font>
+                                    </font>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+        <center></form></center>
+
+    <p><font size=+1><a href="#top">Back to top</a></font>
+    <p>
+        <hr WIDTH="100%">All trademarks are the property of their respective owners,
+        used for product identification purposes only.
+        <br>Last updated: 02/02/2005
+        <br>&nbsp;
+        <br>&nbsp;
+</body>
+</html>

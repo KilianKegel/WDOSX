@@ -3,5 +3,5 @@ Wuschel DOS Extender
 
 <details>
   <summary>View WDOSX documentation</summary>
-  <a href="./WDOSX.htm">Open WDOSX.htm</a>
+  <a href="https://cdn.githubraw.com/KilianKegel/WDOSX/WDOSX.htm">Open WDOSX.html</a>
 </details>
